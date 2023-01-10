@@ -6,12 +6,20 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const generateImage = async(req, res) => {
+
+    //Destructuring the request body
+
+    //console.log('req:', req);
+    const { prompt, size } = req.body;
+    //console.log(prompt, size);
+
+    const imageSize = size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024' ;
 try {
    console.log(process.env.OPEN_API_KEY);
     const response = await openai.createImage({
-        prompt: 'Polar bear on ice cream',
+        prompt,
         n: 1,
-        size: '1024x1024'
+        size: imageSize
     });
 
     const imageUrl = response.data.data[0].url;
