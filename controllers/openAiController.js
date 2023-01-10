@@ -6,10 +6,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const generateImage = async(req, res) => {
-
     //Destructuring the request body
-
     //console.log('req:', req);
+    
     const { prompt, size } = req.body;
     //console.log(prompt, size);
 

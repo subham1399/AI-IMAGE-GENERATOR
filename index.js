@@ -11,5 +11,4 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/openai', require('./routes/openAiRoutes'));
 
-
 app.listen(port, ()=> console.log(`Server started on port: ${port}`));
